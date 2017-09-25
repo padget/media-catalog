@@ -1,5 +1,5 @@
 <div id="new-media-form">
-    <form>
+    <form class="form-control">
         <label for="media-title">Titre</label>
         <input id="media-title" name="media-title" type="text" [(ngModel)]="typed_title">
 
@@ -16,8 +16,8 @@
         <label for="media-author">Auteur</label>
         <input id="media-author" name="media-author" type="text" [(ngModel)]="typed_author">
 
-        <button (click)="save_new_media()">Sauvegarder</button>
-        <button (click)="search_a_media()">Rechercher</button>
+        <button (click)="save_new_media()" class="btn btn-primary" [disabled]="!typed_title || !selected_support || !selected_type">Sauvegarder</button>
+        <button (click)="search_a_media()" class="btn btn-primary" [disabled]="!typed_title">Rechercher</button>
     </form>
 </div>
 <div>
