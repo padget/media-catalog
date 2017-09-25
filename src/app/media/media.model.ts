@@ -1,11 +1,11 @@
 /**
- *
+ * Type possible de média
  */
 export enum MediaType { film, jeux, livre, musique }
 /**
- *
+ * Support possible d'un média
  */
-export enum SupportType { dvd, livre, cd }
+export enum SupportType { dvd, livre, cd, fichier }
 /**
  *
  */
@@ -14,7 +14,7 @@ export class Media {
         public title: string,
         public type: MediaType,
         public support: SupportType,
-        public author: string) {
+        public author: string = '') {
     }
 
     typeName(): string {

@@ -1,20 +1,36 @@
-<div>
+<div id="new-media-form">
     <form>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" required>
-        </div>
+        <label for="media-title">Titre</label>
+        <input id="media-title" name="media-title" type="text" [(ngModel)]="typed_title">
 
-        <div class="form-group">
-            <label for="alterEgo">Alter Ego</label>
-            <input type="text" class="form-control" id="alterEgo">
-        </div>
+        <label for="media-type">Type</label>
+        <select required id="media-type" name="media-type" [(ngModel)]="selected_type">
+            <option *ngFor="let type of media_types()" [value]="type"> {{ type }} </option>
+        </select>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <label for="media-support">Support</label>
+        <select required id="media-support" name="media-support" [(ngModel)]="selected_support">
+            <option *ngFor="let support of media_supports()" [value]="support"> {{ support }} </option>
+        </select>
+
+        <label for="media-author">Auteur</label>
+        <input id="media-author" name="media-author" type="text" [(ngModel)]="typed_author">
+
+        <button (click)="save_new_media()">Sauvegarder</button>
+        <button (click)="search_a_media()">Rechercher</button>
     </form>
 </div>
-<ul>
-    <li *ngFor="let media of medias">
-        {{ media.title }} : {{ media.typeName() }} ({{ media.supportName() }} by {{media.author}})
-    </li>
-</ul>
+<div>
+    <ul>
+        <li *ngFor="let media of medias">
+            {{ media.title }} : {{ media.typeName() }} ({{ media.supportName() }} by {{media.author}})
+        </li>
+    </ul>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let media of medias_search_results">
+            {{ media.title }} : {{ media.typeName() }} ({{ media.supportName() }} by {{media.author}})
+        </li>
+    </ul>
+</div>
